@@ -1,0 +1,27 @@
+// C++ code
+// pins setup
+
+int buzzerPin = 13;  
+int potPin = A4; 
+
+// potentiometer initial value
+int potValue = 0;  
+
+// buzzer initial frequency value
+int buzzerFreq = 0; 
+
+void setup() {
+  // OUTPUT setup
+  pinMode(buzzerPin, OUTPUT);
+}
+
+void loop() {
+  // potentiometer reading (0-1023)
+  potValue = analogRead(potPin);  
+  // mapping frequency (100Hz - 2000Hz)
+  buzzerFreq = map(potValue, 0, 1023, 100, 2000);
+  // play frquency
+  tone(buzzerPin, buzzerFreq);  
+  // delay
+  delay(5000);                                       
+}
